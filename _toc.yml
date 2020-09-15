@@ -1,0 +1,9 @@
+file: CONDUCT
+sections:
+- file: CONTRIBUTING
+- file: README
+- file: IntroModeling/content
+  sections:
+  - file: IntroModeling/intro
+  - file: IntroModeling/markdown
+  - file: IntroModeling/notebooks

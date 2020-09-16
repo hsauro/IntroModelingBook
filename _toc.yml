@@ -1,6 +1,7 @@
-file: content
+file: intro
 sections:
-- file: intro
-- file: markdown
-- file: notebooks
-- file: README
+- file: modeling
+- file: stoichiometricNetworks
+- file: simulation
+- file: plotting
+- file: analysis

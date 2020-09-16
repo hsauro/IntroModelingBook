@@ -1,7 +1,10 @@
 # Book settings
-title: My sample book
+title: Biochemical Modeling
 author: The Jupyter Book Community
 logo: logo.png
+
+parse:
+  myst_extended_syntax: true
 
 latex:
   latex_documents:

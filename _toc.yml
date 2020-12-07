@@ -1,8 +1,9 @@
 file: intro
 sections:
 - file: modeling
+- file: notebooks
 - file: stoichiometricNetworks
 - file: simulation
 - file: plotting
 - file: analysis
-- file: notebooks
+

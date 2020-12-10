@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetics in a Nutshell &#8212; Biochemical Modeling</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Content with notebooks" href="notebooks.html" />
+    <link rel="prev" title="What is biochemical network modeling?" href="modeling.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Biochemical Modeling</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction to Biochemical Pathway Modeling
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeling.html">
+   What is biochemical network modeling?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Kinetics in a Nutshell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#enzyme-kinetics">
+   Enzyme Kinetics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stoichiometricNetworks.html">
+   Stoichiometric Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
+   Running Simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting Options
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis Tools
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/IntroKinetics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/IntroKinetics.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/IntroKinetics.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Kinetics in a Nutshell
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defintions">
+     Defintions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elementary-mass-action-kinetics">
+     Elementary Mass-Action Kinetics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enzyme-kinetics">
+   Enzyme Kinetics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#michaelis-menten-kinetics">
+     Michaelis-Menten Kinetics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-rate-laws">
+     Reversible Rate laws
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#haldane-relationship">
+     Haldane Relationship
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#competitive-inhibition">
+     Competitive Inhibition
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="kinetics-in-a-nutshell">
+<h1>Kinetics in a Nutshell<a class="headerlink" href="#kinetics-in-a-nutshell" title="Permalink to this headline">¶</a></h1>
+<p>Reaction kineticsis the study of how fast chemical reactions take place, what factors influence the rate of reaction, and what mechanisms are responsible.</p>
+<p>A generalized reaction scheme is shown below:</p>
+<div class="math notranslate nohighlight">
+\[ a \text{A} + b \text{B} + \ldots \rightarrow + p \text{P} + q \text{Q} + \ldots \]</div>
+<p>where <span class="math notranslate nohighlight">\(a, b, \ldots, p, q, \ldots\)</span> are called the stoichiometric amounts.</p>
+<div class="section" id="defintions">
+<h2>Defintions<a class="headerlink" href="#defintions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Rate of Change</strong></p>
+<p>The rate of change is defined as the rate of change in concentration or amount of a designated molecular species.</p>
+<div class="math notranslate nohighlight">
+\[ \text{Rate of Change} = \frac{dA}{dt} \]</div>
+<p><strong>Stoichiometric Coefficients</strong></p>
+<p>The {\bfseries stoichiometric coefficient}, <span class="math notranslate nohighlight">\(c_i\)</span>, for a molecular species A<span class="math notranslate nohighlight">\(_j\)</span>, is the difference between the molar amount of species, <span class="math notranslate nohighlight">\(i\)</span> (or {\bfseries stoichiometric amount}) on the product side and the molar amount of the same species on the reactant side.</p>
+<div class="math notranslate nohighlight">
+\[ c_i = \text{Molar Amount of Product} - \text{Molar Amount of Reactant} \]</div>
+<p>In the reaction, 2 A <span class="math notranslate nohighlight">\(\longrightarrow\)</span> B, the molar amount of A on the product side is zero while on the reactant size it is two. Therefore the stoichiometric coefficient of A is given by <span class="math notranslate nohighlight">\(0-2 = -2\)</span>. In many cases a particular species will only occur on the reactant or product side. As a result, reactant stoichiometric coefficients tend to be {\em negative} while product stoichiometric coefficients tend to be {\em positive}.</p>
+<p><strong>Reaction Rates</strong></p>
+<p>The reaction rate, often denoted by the symbol <span class="math notranslate nohighlight">\(v\)</span>, is measured with respect to a given molecular species normalized by the species stoichiometric coefficient. This definition ensures that no matter which molecular species in a reaction is measured, the reaction rate is uniquely defined for that reaction. More formally, the reaction rate for the reaction:</p>
+<div class="math notranslate nohighlight">
+\[ a \text{A} + b \text{B} + \ldots \rightarrow p \text{P} + q \text{Q} + \ldots \]</div>
+<p>is:</p>
+<div class="math notranslate nohighlight">
+\[ v  = \frac{1}{c_a} \frac{d\!A}{dt} = \frac{1}{c_b}
+\frac{d\!B}{dt} \ldots= \frac{1}{c_p} \frac{d\!P}{dt} =
+\frac{1}{c_q} \frac{d\!Q}{dt} \ldots \]</div>
+<p>where <span class="math notranslate nohighlight">\(c_x\)</span> are the stoichiometric coefficients. Alternatively, we can express the rate of change in terms of the reaction rate as:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d\!A}{dt} = c_a v \]</div>
+</div>
+<div class="section" id="elementary-mass-action-kinetics">
+<h2>Elementary Mass-Action Kinetics<a class="headerlink" href="#elementary-mass-action-kinetics" title="Permalink to this headline">¶</a></h2>
+<p>An elementary reaction is one that cannot be broken down into simpler reactions. Such reactions will often display simple kinetics called mass-action kinetics. For a reaction of the form:</p>
+<div class="math notranslate nohighlight">
+\[ a \text{A} + b \text{B} + \ldots \rightleftharpoons p \text{P} + q \text{Q} + \ldots \]</div>
+<p>the mass-action kinetic rate law is given by:</p>
+<div class="math notranslate nohighlight">
+\[ v = k_1 A^a B^b \ldots - k_2 P^p Q^q \ldots \]</div>
+<p><span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> are the forward and reverse rate constants, respectively.</p>
+</div>
+</div>
+<div class="section" id="enzyme-kinetics">
+<h1>Enzyme Kinetics<a class="headerlink" href="#enzyme-kinetics" title="Permalink to this headline">¶</a></h1>
+<p>Enzymes are protein molecules that can accelerate a chemical reaction without changing the reaction equilibrium constant.</p>
+<div class="section" id="michaelis-menten-kinetics">
+<h2>Michaelis-Menten Kinetics<a class="headerlink" href="#michaelis-menten-kinetics" title="Permalink to this headline">¶</a></h2>
+<p>The standard model for enzyme action\index{enzyme action} describes the binding of free enzyme to the reactant forming an enzyme-reactant complex. This complex undergoes a transformation, releasing product and free enzyme. The free enzyme is then available for another round of binding to new reactant.</p>
+<div class="math notranslate nohighlight">
+\[ \text{E} + \text{S} \rightleftharpoons \text{ES} \stackrel{k_2}{\longrightarrow} \text{E} + \text{P} \]</div>
+<p>where <span class="math notranslate nohighlight">\(k_1, k_{-1}\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> are rate constants, <span class="math notranslate nohighlight">\(S\)</span> is substrate, <span class="math notranslate nohighlight">\(P\)</span> is product, <span class="math notranslate nohighlight">\(E\)</span> is the free enzyme, and <span class="math notranslate nohighlight">\(\mathit{ES}\)</span> the enzyme-substrate complex.</p>
+<p>By assuming a steady state condition on the enzyme substrate complex, we can derive the Briggs-Haldane equation\index{Briggs-Haldane} relation (sometimes mistakenly called the Michaelis-Menten equation):</p>
+<div class="math notranslate nohighlight">
+\[ v = \frac{Vm\ S}{K_m + S} \]</div>
+<p>where <span class="math notranslate nohighlight">\(V_m\)</span> is the maximal velocity, and <span class="math notranslate nohighlight">\(K_m\)</span> the substrate concentration that yields half the maximum velocity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my 1st line
+my 2nd line
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reversible-rate-laws">
+<h2>Reversible Rate laws<a class="headerlink" href="#reversible-rate-laws" title="Permalink to this headline">¶</a></h2>
+<p>An alternative and more realistic model is the reversible form:</p>
+<div class="math notranslate nohighlight">
+\[ \text{E} + \text{S} \rightleftharpoons \text{ES} \rightleftharpoons \text{E} + \text{P} \]</div>
+<p>The aggregate rate law for the reversible form of the mechanism can also be derived and is given by:</p>
+<div class="math notranslate nohighlight">
+\[ v = \frac{V_f\ S/K_S - V_r\ P/K_P}{1 + S/K_S + P/K_P} \]</div>
+</div>
+<div class="section" id="haldane-relationship">
+<h2>Haldane Relationship<a class="headerlink" href="#haldane-relationship" title="Permalink to this headline">¶</a></h2>
+<p>For the reversible enzyme kinetic law there is an important relationship:</p>
+<div class="math notranslate nohighlight">
+\[ K_{eq} = \frac{P_{eq}}{S_{eq}} = \frac{V_f\ K_P}{V_r\ K_S} \]</div>
+<p>This equation sh-ows that the four kinetic constants, <span class="math notranslate nohighlight">\(V_f, V_r, K_P\)</span> and <span class="math notranslate nohighlight">\(K_S\)</span> are not independent. Haldane relationships can be used to eliminate one of the kinetic constants by substituting the equilibrium constant in its place. This is useful because equilibrium constants tend to be known compared to kinetic constants which may be unknown. By incorporating the Haldane relationship, we can eliminate the reverse maximal velocity (<span class="math notranslate nohighlight">\(V_r\)</span>) from~\ref{eqn:revMM} to yield the equation:</p>
+<div class="math notranslate nohighlight">
+\[ v = \frac{V_f/K_S (S - P/K_{eq})}{1 + S/K_S + P/K_P} \]</div>
+<p>Separating out the terms makes it easier to see that the above equation can be partitioned into a number of distinct parts:</p>
+<div class="math notranslate nohighlight">
+\[ v = V_f\ \cdot\ (1 - \Gamma/K_{eq})\ \cdot\ \frac{S/K_s}{1 + S/K_S + P/K_P} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\Gamma = P/S\)</span>. The first term, <span class="math notranslate nohighlight">\(V_f\)</span>, is the maximal velocity; the second term, <span class="math notranslate nohighlight">\((1 - \Gamma/K_{eq})\)</span>, indicates the direction of the reaction according to thermodynamic considerations. The last term refers to the fractional saturation with respect to substrate. Thus we have a maximal velocity, a thermodynamic and a saturation term.</p>
+</div>
+<div class="section" id="competitive-inhibition">
+<h2>Competitive Inhibition<a class="headerlink" href="#competitive-inhibition" title="Permalink to this headline">¶</a></h2>
+<p>There are many molecules capable of slowing down or speeding up the rate of enzyme catalyzed reactions. Such molecules are called enzyme inhibitors and activators. One common type of inhibition, called competitive inhibition, occurs when the inhibitor is structurally similar to the substrate so that it competes for the active site by forming a dead-end complex.</p>
+<p><img alt="InhibitorMechanisms50.png" src="attachment:InhibitorMechanisms50.png" /></p>
+<p>Competitive and Uncompetitive Inhibition. <span class="math notranslate nohighlight">\(P\)</span> is the concentration of product, <span class="math notranslate nohighlight">\(\mathit{E}\)</span> is the free enzyme, <span class="math notranslate nohighlight">\(\mathit{ES}\)</span> the enzyme-substrate complex, and <span class="math notranslate nohighlight">\(\mathit{ESI}\)</span> the enzyme-substrate-inhibitor complex. }</p>
+<p>The kinetic mechanism for a pure competitive inhibitor is shown in Figure above (a) where <span class="math notranslate nohighlight">\(\mathit{I}\)</span> is the inhibitor and <span class="math notranslate nohighlight">\(\mathit{EI}\)</span> the enzyme inhibitor complex. If the substrate concentration is increased, it is possible for the substrate to eventually out compete the inhibitor. For this reason the inhibitor alters the enzyme’s apparent <span class="math notranslate nohighlight">\(K_m\)</span>, but not the <span class="math notranslate nohighlight">\(V_{\text{m}}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ v = \frac{V_m\ S}{S + K_m\left(1 + \displaystyle\frac{I}{K_i}\right)} \\[8pt]
+   = \frac{V_m\ S/K_m}{1 + S/K_m + I/K_i}
+\end{split}\]</div>
+<p>At <span class="math notranslate nohighlight">\(I=0\)</span>, the competitive inhibition equation reduces to the normal irreversible Michaelis-Menten equation. Note that the term <span class="math notranslate nohighlight">\(K_m (1 + I/K_i)\)</span> in the first equation more clearly shows the impact of the inhibitor, <span class="math notranslate nohighlight">\(I\)</span>, on the <span class="math notranslate nohighlight">\(K_m\)</span>. The inhibitor has no effect on the <span class="math notranslate nohighlight">\(V_m\)</span>.</p>
+<p>A reversible form of the competitive rate law can also be derived:</p>
+<div class="math notranslate nohighlight">
+\[ v = \frac{\displaystyle\frac{V_m}{K_{s}} \left( \displaystyle S - \displaystyle\frac{P}{K_{\text{eq}}}\right)}{1 + \displaystyle\frac{S}{K_{s}} + \displaystyle\frac{P}{K_{p}} + \displaystyle\frac{I}{K_i}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(V_m\)</span> is the forward maximal velocity, and <span class="math notranslate nohighlight">\(K_{s}\)</span> and <span class="math notranslate nohighlight">\(K_{p}\)</span> are the substrate and product half saturation constants.</p>
+<p>Sometimes reactions appear irreversible, where no discernable reverse rate is detected, and yet the forward reaction is influenced by the accumulation of product. This effect is caused by the product competing with substrate for binding to the active site and is often called product inhibition. Given that product inhibition is a type of competitive inhibition, we will briefly discuss it. An important industrial example of this is the conversion of lactose to galactose by the enzyme <span class="math notranslate nohighlight">\(\beta-\)</span>galactosidase where galactose competes with lactose, slowing the forward rate.</p>
+<p>To describe simple product inhibition with an irreversible reaction, we can set the <span class="math notranslate nohighlight">\(P/K_{eq}\)</span> term in the reversible Michaelis-Menten rate law~\eqref{eqn:revMM} to zero. This yields:</p>
+<div class="math notranslate nohighlight">
+\[ v = \frac{V_{m} S}{S + K_m \left( 1 + \displaystyle\frac{P}{K_p}\right)} \]</div>
+<p>It is not surprising to discover that equation has exactly the same form as the equation for competitive inhibition. As the product increases, it out competes the substrate and therefore slows down the reaction rate.</p>
+<p>We can also derive the equation by using the following mechanism and the rapid-equilibrium assumption:</p>
+<div class="math notranslate nohighlight">
+\[ \text{E} + S \rightleftharpoons \text{ES} \longrightarrow \text{EP} \rightleftharpoons  \text{E} + \text{P} \]</div>
+<p>where the reaction rate <span class="math notranslate nohighlight">\(v\)</span> is assumed to be proportional to <span class="math notranslate nohighlight">\(\mathit{ES}\)</span>.</p>
+<p><img alt="InhibitorMechanisms50.png" src="attachment:competitiveInhibitionGraph60.png" /></p>
+<p>Competitive inhibition: Effect of substrate concentration on the reaction rate as a function of different inhibitor concentrations: <span class="math notranslate nohighlight">\(V_m = 1, K_m = 1, K_i = 1\)</span>. Solid circles mark the apparent <span class="math notranslate nohighlight">\(K_m\)</span> values and the light circle the <span class="math notranslate nohighlight">\(K_m\)</span> in the absence of inhibitor. As the inhibitor concentration increases the apparent <span class="math notranslate nohighlight">\(K_m\)</span> increases in value.</p>
+<p>CODE EXPERIMENTS WITH COMPETITIVE INHIBITION</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="modeling.html" title="previous page">What is biochemical network modeling?</a>
+    <a class='right-next' id="next-link" href="notebooks.html" title="next page">Content with notebooks</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

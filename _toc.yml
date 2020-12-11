@@ -3,11 +3,7 @@ sections:
 - file: modeling
 - file: notebooks
 - file: stoichiometricNetworks
-- file: model_construction
 - file: simulation
-- file: model_simulation
 - file: plotting
 - file: analysis
-- file: advanced_analyses
-- file: standardized_formats
 

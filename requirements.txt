@@ -1,8 +1,10 @@
-jupyter-book
+ipympl
 matplotlib
 numpy
 pandas
-jupyterlab
+jupyter[notebook]
 tellurium
 lmfit
 SBstoat
+sphinxcontrib-bibtex==1.0.0
+jupyter-book

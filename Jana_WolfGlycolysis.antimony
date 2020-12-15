@@ -61,21 +61,9 @@ model *Jana_WolfGlycolysis()
   J8_k2 = 375;
   J9_k = 28;
   J10_k = 80;
-  J2_k = 9.8;
-  J3_k = 85.7;
-  J5_k = 80;
-  J6_k = 9.7;
-  J7_k = 2000;
-  J8_k1 = 375;
-  J8_k2 = 375;
-  J9_k = 28;
-  J10_k = 80;
-
+  
   // Other declarations:
   const compartment_, J0_inputFlux, J1_k1, J1_Ki, J1_n, J2_k, J3_k;
   const J4_kg, J4_kp, J4_ka, J4_kk, J5_k, J6_k, J7_k, J8_k1, J8_k2;
-  const J9_k, J10_k, J2_k, J3_k, J5_k, J6_k, J7_k, J8_k1, J8_k2, J9_k;
-  const J10_k;
+  const J9_k, J10_k;
 end
-
-Jana_WolfGlycolysis is "JanaWolf Glycolysis"

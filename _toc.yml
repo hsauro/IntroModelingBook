@@ -2,6 +2,7 @@ file: intro
 sections:
 - file: modeling
 - file: notebooks
+- file: kinetics
 - file: stoichiometricNetworks
 - file: model_construction
 - file: simulation

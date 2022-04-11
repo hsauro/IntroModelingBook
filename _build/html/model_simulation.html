@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner &#8212; Biochemical Modeling</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plotting Options" href="plotting.html" />
+    <link rel="prev" title="Running Simulations" href="simulation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Biochemical Modeling</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction to Biochemical Pathway Modeling
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeling.html">
+   What is biochemical network modeling?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stoichiometricNetworks.html">
+   Stoichiometric Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_construction.html">
+   Chapter X: Building a mechanistic model with the Antimony language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
+   Running Simulations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting Options
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advanced_analyses.html">
+   Chapter X: Advanced analyses with Tellurium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="standardized_formats.html">
+   Chapter X: SBML, SED-ML, and the COMBINE archive: standard formats supported in Tellurium
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/model_simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/model_simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-does-numerical-simulation-help-us-model-network-kinetics">
+   How does numerical simulation help us model network kinetics?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-numerical-integration-performed">
+   How is numerical integration performed?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-the-simple-antimony-model">
+   Simulating the simple Antimony model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-simple-antimony-model">
+   Plotting the simple Antimony model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-a-simulation-with-events">
+   Writing a simulation with events
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-a-complex-model-with-interesting-dynamics">
+   Simulating a complex model with interesting dynamics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-a-complex-model-of-a-true-biological-system">
+   Simulating a complex model of a true biological system
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-x-running-deterministic-and-stochastic-simulations-with-tellurium-and-libroadrunner">
+<h1>Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner<a class="headerlink" href="#chapter-x-running-deterministic-and-stochastic-simulations-with-tellurium-and-libroadrunner" title="Permalink to this headline">¶</a></h1>
+<br>
+<div align='center'>
+    <figure>
+    <img src="https://raw.githubusercontent.com/vporubsky/tellurium-libroadrunner-tutorial/master/tellurium-utilities.png" width="75%" style="padding: 20px">
+        <figcaption>Tellurium is an integrated modeling environment which makes available libraries to support biochemical model building and simulation. Reproduced from [cite Tellurium paper/docs].</figcaption>
+    </figure>
+</div><div class="section" id="how-does-numerical-simulation-help-us-model-network-kinetics">
+<h2>How does numerical simulation help us model network kinetics?<a class="headerlink" href="#how-does-numerical-simulation-help-us-model-network-kinetics" title="Permalink to this headline">¶</a></h2>
+<ul>
+  <li>Provides a method to approximate analytical solutions for complex (often non-linear) systems</li>
+  <li>Kinetic laws describe the rates of change of species in the system, which can be modeled mathematically</li>
+  <li>For a sufficiently large network, simulators must be efficient and perform rapid numerical integration</li>
+</ul>
+</div>
+<div class="section" id="how-is-numerical-integration-performed">
+<h2>How is numerical integration performed?<a class="headerlink" href="#how-is-numerical-integration-performed" title="Permalink to this headline">¶</a></h2>
+<ul>
+  <li>Requires differential equations describing the model, constant values, and initial conditions for all variables which are evolving in time</li>
+  <li>Numerical integration algorithms assume local linearity, and use tangent lines over small step sizes to gradually approximate the solution, starting from some initial value</li>
+  <li>Euler's method can be examined as a simple example</li>
+</ul><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, install Tellurium, which comes with libRoadRunner </span>
+<span class="o">!</span>pip install tellurium
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tellurium in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (2.1.6)
+Requirement already satisfied: tesedml&gt;=0.4.3 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (0.4.5.2)
+Requirement already satisfied: jinja2&gt;=2.9.6 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (2.11.2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: You are using pip version 20.1; however, version 20.3.3 is available.
+You should consider upgrading via the &#39;C:\Tellurium-Winpython-3.7\python-3.7.7.amd64\python.exe -m pip install --upgrade pip&#39; command.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib&gt;=2.0.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (3.2.2)
+Requirement already satisfied: ipykernel&gt;=4.6.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (5.3.2)
+Requirement already satisfied: tecombine&gt;=0.2.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (0.2.7.0)
+Requirement already satisfied: scipy&gt;=1.5.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.5.4)
+Requirement already satisfied: pytest in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (5.4.3)
+Requirement already satisfied: sbml2matlab&gt;=0.9.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.2.3)
+Requirement already satisfied: jupyter-client&gt;=5.1.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (6.1.5)
+Requirement already satisfied: ipython in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (7.16.1)
+Requirement already satisfied: tesbml&gt;=5.18.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (5.18.1.2)
+Requirement already satisfied: appdirs&gt;=1.4.3 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.4.4)
+Requirement already satisfied: jupyter-core&gt;=4.3.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (4.6.3)
+Requirement already satisfied: numpy&gt;=1.19.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.19.0)
+Requirement already satisfied: tenuml&gt;=1.0.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.1.1.4)
+Requirement already satisfied: antimony&gt;=2.12.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (2.12.0.3)
+Requirement already satisfied: libroadrunner&gt;=2.0.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (2.0.2)
+Requirement already satisfied: pandas&gt;=0.20.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.0.5)
+Requirement already satisfied: phrasedml&gt;=1.0.9 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (1.0.10)
+Requirement already satisfied: plotly&gt;=2.0.12 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (4.8.2)
+Requirement already satisfied: requests in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from tellurium) (2.24.0)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from jinja2&gt;=2.9.6-&gt;tellurium) (1.1.1)
+Requirement already satisfied: cycler&gt;=0.10 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from matplotlib&gt;=2.0.2-&gt;tellurium) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from matplotlib&gt;=2.0.2-&gt;tellurium) (1.2.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from matplotlib&gt;=2.0.2-&gt;tellurium) (2.4.7)
+Requirement already satisfied: python-dateutil&gt;=2.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from matplotlib&gt;=2.0.2-&gt;tellurium) (2.8.1)
+Requirement already satisfied: tornado&gt;=4.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipykernel&gt;=4.6.1-&gt;tellurium) (6.0.4)
+Requirement already satisfied: traitlets&gt;=4.1.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipykernel&gt;=4.6.1-&gt;tellurium) (4.3.3)
+Requirement already satisfied: wcwidth in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (0.2.5)
+Requirement already satisfied: py&gt;=1.5.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (1.9.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (19.3.0)
+Requirement already satisfied: more-itertools&gt;=4.0.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (8.4.0)
+Requirement already satisfied: pluggy&lt;1.0,&gt;=0.12 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (0.13.1)
+Requirement already satisfied: atomicwrites&gt;=1.0; sys_platform == &quot;win32&quot; in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (1.4.0)
+Requirement already satisfied: colorama; sys_platform == &quot;win32&quot; in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (0.4.3)
+Requirement already satisfied: packaging in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (20.4)
+Requirement already satisfied: importlib-metadata&gt;=0.12; python_version &lt; &quot;3.8&quot; in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pytest-&gt;tellurium) (1.7.0)
+Requirement already satisfied: pyzmq&gt;=13 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from jupyter-client&gt;=5.1.0-&gt;tellurium) (19.0.1)
+Requirement already satisfied: pickleshare in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (0.7.5)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (3.0.5)
+Requirement already satisfied: setuptools&gt;=18.5 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (46.4.0)
+Requirement already satisfied: jedi&gt;=0.10 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (0.17.1)
+Requirement already satisfied: decorator in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (4.4.2)
+Requirement already satisfied: pygments in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (2.6.1)
+Requirement already satisfied: backcall in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from ipython-&gt;tellurium) (0.2.0)
+Requirement already satisfied: pywin32&gt;=1.0; sys_platform == &quot;win32&quot; in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from jupyter-core&gt;=4.3.0-&gt;tellurium) (228)
+Requirement already satisfied: pytz&gt;=2017.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from pandas&gt;=0.20.2-&gt;tellurium) (2020.1)
+Requirement already satisfied: six in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from plotly&gt;=2.0.12-&gt;tellurium) (1.15.0)
+Requirement already satisfied: retrying&gt;=1.3.3 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from plotly&gt;=2.0.12-&gt;tellurium) (1.3.3)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from requests-&gt;tellurium) (1.25.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from requests-&gt;tellurium) (2020.6.20)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from requests-&gt;tellurium) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from requests-&gt;tellurium) (2.10)
+Requirement already satisfied: ipython-genutils in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from traitlets&gt;=4.1.0-&gt;ipykernel&gt;=4.6.1-&gt;tellurium) (0.2.0)
+Requirement already satisfied: zipp&gt;=0.5 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from importlib-metadata&gt;=0.12; python_version &lt; &quot;3.8&quot;-&gt;pytest-&gt;tellurium) (3.1.0)
+Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in c:\tellurium-winpython-3.7\python-3.7.7.amd64\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;tellurium) (0.7.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span> <span class="c1"># Python-based modeling environment for kinetic models</span>
+<span class="kn">import</span> <span class="nn">roadrunner</span> <span class="k">as</span> <span class="nn">rr</span> <span class="c1"># High-performance simulation and analysis library</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># Scientific computing package</span>
+<span class="kn">import</span> <span class="nn">random</span> <span class="c1"># Generate random numbers </span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># Additional Python plotting utilities</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simulating-the-simple-antimony-model">
+<h2>Simulating the simple Antimony model<a class="headerlink" href="#simulating-the-simple-antimony-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ant_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">model test               # name the model</span>
+<span class="s2">    compartment C1;      # specify compartments</span>
+<span class="s2">    C1 = 1.0;            # assign compartment volume</span>
+<span class="s2">    species S1, S2;      # specify species</span>
+<span class="s2">    S1 in C1; S2 in C1;  # allocate species to appropriate compartment</span>
+
+<span class="s2"> </span>
+<span class="s2">    J1: S1 -&gt; S2; k1*S1; # reaction; reaction rate law;</span>
+<span class="s2">    </span>
+<span class="s2">    S1 = 10.0;           # assign species initial conditions</span>
+<span class="s2">    S2 = 0.0;</span>
+
+<span class="s2">    k1 = 1.0;            # assign constant values to global parameters</span>
+<span class="s2">end</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">Ant_str</span><span class="p">)</span>  <span class="c1"># create an executable model by loading the string to a RoadRunner object instance</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span> <span class="c1"># simulate(time_start, time_end, number_of_points)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        time,        [S1],    [S2]
+ [[        0,          10,       0],
+  [ 0.416667,      6.5924,  3.4076],
+  [ 0.833333,     4.34599, 5.65401],
+  [     1.25,     2.86506, 7.13494],
+  [  1.66667,     1.88877, 8.11123],
+  [  2.08333,     1.24516, 8.75484],
+  [      2.5,    0.820861, 9.17914],
+  [  2.91667,    0.541147, 9.45885],
+  [  3.33333,    0.356747, 9.64325],
+  [     3.75,    0.235183, 9.76482],
+  [  4.16667,    0.155042, 9.84496],
+  [  4.58333,    0.102211, 9.89779],
+  [        5,   0.0673815, 9.93262],
+  [  5.41667,   0.0444208, 9.95558],
+  [  5.83333,   0.0292841, 9.97072],
+  [     6.25,   0.0193053, 9.98069],
+  [  6.66667,   0.0127269, 9.98727],
+  [  7.08333,   0.0083901, 9.99161],
+  [      7.5,  0.00553111, 9.99447],
+  [  7.91667,  0.00364634, 9.99635],
+  [  8.33333,  0.00240382,  9.9976],
+  [     8.75,   0.0015847, 9.99842],
+  [  9.16667,   0.0010447, 9.99896],
+  [  9.58333, 0.000688713, 9.99931],
+  [       10, 0.000454029, 9.99955]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-the-simple-antimony-model">
+<h2>Plotting the simple Antimony model<a class="headerlink" href="#plotting-the-simple-antimony-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Uni-uni mass-action model&#39;</span><span class="p">,</span> <span class="n">xtitle</span> <span class="o">=</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">ytitle</span> <span class="o">=</span> <span class="s1">&#39;Concentration&#39;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/model_simulation_8_0.png" src="_images/model_simulation_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="writing-a-simulation-with-events">
+<h2>Writing a simulation with events<a class="headerlink" href="#writing-a-simulation-with-events" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ant_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">model test               # name the model</span>
+<span class="s2">    J1: S1 -&gt; S2; k1*S1; # reaction; reaction rate law;</span>
+<span class="s2">    </span>
+<span class="s2">    S1 = 10.0;           # assign species initial conditions</span>
+<span class="s2">    S2 = 0.0;</span>
+
+<span class="s2">    k1 = 1.0;            # assign constant values to global parameters</span>
+<span class="s2">    E1: at (time &gt; 5): S1 = 10; # add an event - spike in S1</span>
+<span class="s2">end</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">Ant_str</span><span class="p">)</span>  <span class="c1"># create an executable model by loading the string to a RoadRunner object instance</span>
+<span class="n">r</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># simulate(time_start, time_end, number_of_points)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Uni-uni mass-action model with event&#39;</span><span class="p">,</span> <span class="n">xtitle</span> <span class="o">=</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">ytitle</span> <span class="o">=</span> <span class="s1">&#39;Concentration&#39;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/model_simulation_10_0.png" src="_images/model_simulation_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="simulating-a-complex-model-with-interesting-dynamics">
+<h2>Simulating a complex model with interesting dynamics<a class="headerlink" href="#simulating-a-complex-model-with-interesting-dynamics" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repressilator_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2"># Compartments and Species:</span>
+<span class="s2">species M1, P3, P1, M2, P2, M3;</span>
+
+<span class="s2"># Reactions:</span>
+<span class="s2">J0:  -&gt; M1; a_m1*(Kr_P3^n1/(Kr_P3^n1 + P3^n1)) + leak1;</span>
+<span class="s2">J1: M1 -&gt; ; d_m1*M1;</span>
+<span class="s2">J2:  -&gt; P1; a_p1*M1;</span>
+<span class="s2">J3: P1 -&gt; ; d_p1*P1;</span>
+<span class="s2">J4:  -&gt; M2; a_m2*(Kr_P1^n2/(Kr_P1^n2 + P1^n2)) + leak2;</span>
+<span class="s2">J5: M2 -&gt; ; d_m2*M2;</span>
+<span class="s2">J6:  -&gt; P2; a_p2*M2;</span>
+<span class="s2">J7: P2 -&gt; ; d_p2*P2;</span>
+<span class="s2">J8:  -&gt; M3; a_m3*(Kr_P2^n3/(Kr_P2^n3 + P2^n3)) + leak3;</span>
+<span class="s2">J9: M3 -&gt; ; d_m3*M3;</span>
+<span class="s2">J10:  -&gt; P3; a_p3*M3;</span>
+<span class="s2">J11: P3 -&gt; ; d_p3*P3;</span>
+
+<span class="s2"># Species initializations:</span>
+<span class="s2">M1 = 0.604016261711246;</span>
+<span class="s2">P3 = 1.10433330559171;</span>
+<span class="s2">P1 = 7.94746428021418;</span>
+<span class="s2">M2 = 2.16464969760648;</span>
+<span class="s2">P2 = 3.55413750091507;</span>
+<span class="s2">M3 = 2.20471854765531;</span>
+
+<span class="s2"># Variable initializations:</span>
+<span class="s2">a_m1 = 1.13504504342841;</span>
+<span class="s2">Kr_P3 = 0.537411795656332;</span>
+<span class="s2">n1 = 7.75907326833983;</span>
+<span class="s2">leak1 = 2.59839004225795e-07;</span>
+<span class="s2">d_m1 = 0.360168301619141;</span>
+<span class="s2">a_p1 = 5.91755684808254;</span>
+<span class="s2">d_p1 = 1.11075218613419;</span>
+<span class="s2">a_m2 = 2.57306185467814;</span>
+<span class="s2">Kr_P1 = 0.190085253528206;</span>
+<span class="s2">n2 = 6.89140262856765;</span>
+<span class="s2">leak2 = 1.51282707494481e-06;</span>
+<span class="s2">d_m2 = 1.05773721506759;</span>
+<span class="s2">a_p2 = 8.35628834784826;</span>
+<span class="s2">d_p2 = 0.520562081730298;</span>
+<span class="s2">a_m3 = 0.417889543691157;</span>
+<span class="s2">Kr_P2 = 2.71031378955001;</span>
+<span class="s2">n3 = 0.44365980532785;</span>
+<span class="s2">leak3 = 3.63586125130783e-11;</span>
+<span class="s2">d_m3 = 0.805873530762994;</span>
+<span class="s2">a_p3 = 4.61276807677109;</span>
+<span class="s2">d_p3 = 1.54954108126666;</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">repressilator</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">repressilator_str</span><span class="p">)</span>
+<span class="n">repressilator</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">repressilator</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/model_simulation_12_0.png" src="_images/model_simulation_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="simulating-a-complex-model-of-a-true-biological-system">
+<h2>Simulating a complex model of a true biological system<a class="headerlink" href="#simulating-a-complex-model-of-a-true-biological-system" title="Permalink to this headline">¶</a></h2>
+<p>Using the model describe in Chapter X, we will demonstrate both deterministic and stochastic simulation studies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antimony_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">model sars_cov2_infection</span>
+
+<span class="s2">// Define model equations</span>
+<span class="s2">production_genomic_ssRNA:               -&gt; gen_ssRNA;   k1*rep_ssRNA</span>
+<span class="s2">transcription_genomic_ssRNA:  gen_ssRNA -&gt; rep_ssRNA;   k2*gen_ssRNA</span>
+<span class="s2">translation_of_viral_envelope:          -&gt; envelope;    k3*rep_ssRNA</span>
+<span class="s2">degradation_of_ssRNA:         rep_ssRNA -&gt; ;            k4*rep_ssRNA</span>
+<span class="s2">degradation_of_envelope:       envelope -&gt; ;            k5*envelope</span>
+<span class="s2">formation_of_free_virus_complex: gen_ssRNA + envelope -&gt; virus_free;  k6*gen_ssRNA*envelope</span>
+<span class="s2">binding_of_virus_complex_to_host:  virus_free + $ACE2 -&gt; virus_bound; k7*virus_free*ACE2</span>
+
+<span class="s2">// Annotate reactions</span>
+<span class="s2">transcription_genomic_ssRNA.sboTerm = SBO:0000183</span>
+<span class="s2">translation_of_viral_envelope.sboTerm = SBO:0000184</span>
+
+<span class="s2">// Set global constants</span>
+<span class="s2">k1 = 0.968; k2 = 0.025;</span>
+<span class="s2">k3 = 1000; k4 = 0.222</span>
+<span class="s2">k5 = 2; k6 = 7.5E-6</span>
+<span class="s2">k7 = 0.112 </span>
+
+<span class="s2">// Annotate kinetic constant distribution information</span>
+<span class="s2"># k1.confidenceInterval = {0.883, 0.892}</span>
+<span class="s2"># k4.confidenceInterval = {0.184, 0.186}</span>
+
+<span class="s2">// Set initial conditions</span>
+<span class="s2">rep_ssRNA = 1; gen_ssRNA = 0;</span>
+<span class="s2">envelope = 0; ACE2 = 100;</span>
+<span class="s2">virus_free = 0; virus_bound = 0;</span>
+
+<span class="s2">end</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+
+<span class="c1"># Load the model string into a RoadRunner object instance</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">antimony_str</span><span class="p">)</span>
+
+<span class="c1"># Generate deterministic results using CVODE</span>
+<span class="n">det_results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">simulate</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_ssRNA&#39;</span><span class="p">])</span>
+
+<span class="c1"># Set a seed value for reproducible stochastic output</span>
+<span class="n">model</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="mi">124</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># Reset variable concentrations to initial conditions</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="c1"># Generate stochastic results using Gillespie&#39;s algorithm</span>
+    <span class="n">stoch_results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">gillespie</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_ssRNA&#39;</span><span class="p">])</span>
+    <span class="c1"># Plot stochastic simulation trajectory</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stoch_results</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">stoch_results</span><span class="p">[</span><span class="s1">&#39;gen_ssRNA&#39;</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># Plot deterministic results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">det_results</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">det_results</span><span class="p">[</span><span class="s1">&#39;gen_ssRNA&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[gen_ssRNA]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save figure for Docker implementation and show</span>
+<span class="c1"># plt.savefig(&#39;curated_k7_sars_cov2_infection_simulation.jpg&#39;, dpi = 300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Timeseries of gen_ssRNA using fitted values for k1 and k4, and curated data for k7:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">det_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/model_simulation_15_0.png" src="_images/model_simulation_15_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timeseries of gen_ssRNA using fitted values for k1 and k4, and curated data for k7:
+       time, gen_ssRNA
+ [[       0,         0],
+  [  2.0202,   1.55461],
+  [  4.0404,   2.58539],
+  [ 6.06061,   3.36224],
+  [ 8.08081,   4.03135],
+  [  10.101,   4.67416],
+  [ 12.1212,   5.33803],
+  [ 14.1414,   6.05248],
+  [ 16.1616,   6.83787],
+  [ 18.1818,   7.71011],
+  [  20.202,   8.68312],
+  [ 22.2222,   9.77029],
+  [ 24.2424,   10.9851],
+  [ 26.2626,   12.3416],
+  [ 28.2828,   13.8547],
+  [  30.303,   15.5398],
+  [ 32.3232,   17.4132],
+  [ 34.3434,   19.4919],
+  [ 36.3636,   21.7933],
+  [ 38.3838,   24.3349],
+  [  40.404,   27.1339],
+  [ 42.4242,   30.2071],
+  [ 44.4444,   33.5698],
+  [ 46.4646,   37.2357],
+  [ 48.4848,   41.2158],
+  [ 50.5051,   45.5176],
+  [ 52.5253,   50.1446],
+  [ 54.5455,   55.0948],
+  [ 56.5657,   60.3608],
+  [ 58.5859,   65.9279],
+  [ 60.6061,   71.7748],
+  [ 62.6263,   77.8724],
+  [ 64.6465,   84.1841],
+  [ 66.6667,   90.6665],
+  [ 68.6869,   97.2698],
+  [ 70.7071,   103.939],
+  [ 72.7273,   110.617],
+  [ 74.7475,   117.244],
+  [ 76.7677,    123.76],
+  [ 78.7879,    130.11],
+  [ 80.8081,   136.241],
+  [ 82.8283,   142.109],
+  [ 84.8485,   147.675],
+  [ 86.8687,    152.91],
+  [ 88.8889,   157.793],
+  [ 90.9091,   162.313],
+  [ 92.9293,   166.465],
+  [ 94.9495,   170.252],
+  [ 96.9697,   173.684],
+  [ 98.9899,   176.777],
+  [  101.01,   179.547],
+  [  103.03,   182.016],
+  [ 105.051,   184.207],
+  [ 107.071,   186.142],
+  [ 109.091,   187.846],
+  [ 111.111,   189.342],
+  [ 113.131,    190.65],
+  [ 115.152,   191.791],
+  [ 117.172,   192.785],
+  [ 119.192,   193.648],
+  [ 121.212,   194.397],
+  [ 123.232,   195.046],
+  [ 125.253,   195.607],
+  [ 127.273,   196.091],
+  [ 129.293,   196.509],
+  [ 131.313,    196.87],
+  [ 133.333,   197.181],
+  [ 135.354,   197.448],
+  [ 137.374,   197.679],
+  [ 139.394,   197.877],
+  [ 141.414,   198.047],
+  [ 143.434,   198.193],
+  [ 145.455,   198.319],
+  [ 147.475,   198.427],
+  [ 149.495,    198.52],
+  [ 151.515,   198.599],
+  [ 153.535,   198.668],
+  [ 155.556,   198.727],
+  [ 157.576,   198.777],
+  [ 159.596,    198.82],
+  [ 161.616,   198.857],
+  [ 163.636,   198.889],
+  [ 165.657,   198.917],
+  [ 167.677,    198.94],
+  [ 169.697,    198.96],
+  [ 171.717,   198.978],
+  [ 173.737,   198.992],
+  [ 175.758,   199.005],
+  [ 177.778,   199.016],
+  [ 179.798,   199.025],
+  [ 181.818,   199.033],
+  [ 183.838,    199.04],
+  [ 185.859,   199.046],
+  [ 187.879,   199.051],
+  [ 189.899,   199.056],
+  [ 191.919,   199.059],
+  [ 193.939,   199.063],
+  [  195.96,   199.065],
+  [  197.98,   199.068],
+  [     200,    199.07]]
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<html>
+   <head>
+      <title>Bibliography</title>
+   </head>
+   <body>
+      <h1>Bibliography</h1>
+      <ol>
+         <li>
+            <p>K. Choi et al., <cite>Tellurium: An extensible python-based modeling environment for systems and synthetic biology</cite>, Biosystems, vol. 171, pp. 74–79, Sep. 2018.</p>
+         </li>
+         <li>
+            <p>E. T. Somogyi et al., <cite>libRoadRunner: a high performance SBML simulation and analysis library.,</cite>, Bioinformatics, vol. 31, no. 20, pp. 3315–21, Oct. 2015.</p>         
+          <li>
+            <p>L. P. Smith, F. T. Bergmann, D. Chandran, and H. M. Sauro, <cite>Antimony: a modular model definition language</cite>, Bioinformatics, vol. 25, no. 18, pp. 2452–2454, Sep. 2009.</p>
+         </li>
+         <li>
+            <p>K. Choi, L. P. Smith, J. K. Medley, and H. M. Sauro, <cite>phraSED-ML: a paraphrased, human-readable adaptation of SED-ML</cite>, J. Bioinform. Comput. Biol., vol. 14, no. 06, Dec. 2016.</p>
+         </li>
+         <li>
+            <p>J. Wolf, H. Y. Sohn, R. Heinrich, and H. Kuriyama, <cite>Mathematical analysis of a mechanism for autonomous metabolic oscillations in continuous culture of Saccharomyces cerevisiae</cite>, FEBS Lett., vol. 499, no. 3, pp. 230–234, Jun. 2001.</p>
+         </li>
+      </ol>
+   </body>
+</html></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="simulation.html" title="previous page">Running Simulations</a>
+    <a class='right-next' id="next-link" href="plotting.html" title="next page">Plotting Options</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

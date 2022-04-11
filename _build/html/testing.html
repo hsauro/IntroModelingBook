@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Kinetics Models &#8212; Biochemical Modeling</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Biochemical Modeling</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction to Biochemical Pathway Modeling
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeling.html">
+   What is biochemical network modeling?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stoichiometricNetworks.html">
+   Stoichiometric Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_construction.html">
+   Chapter X: Building a mechanistic model with the Antimony language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
+   Running Simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_simulation.html">
+   Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting Options
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis.html">
+   Analysis Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advanced_analyses.html">
+   Chapter X: Advanced analyses with Tellurium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="standardized_formats.html">
+   Chapter X: SBML, SED-ML, and the COMBINE archive: standard formats supported in Tellurium
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/testing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/testing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#static-testing">
+   Static Testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-testing">
+   Dynamic Testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-from-biomodels">
+   Example from BioModels
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-mass-balance">
+     Checking mass balance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-for-cyclic-behavior">
+     Checking for cyclic behavior
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="testing-kinetics-models">
+<h1>Testing Kinetics Models<a class="headerlink" href="#testing-kinetics-models" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Consider a linear pathway consisting of three species <code class="docutils literal notranslate"><span class="pre">S1</span></code>, <code class="docutils literal notranslate"><span class="pre">S2</span></code>, and <code class="docutils literal notranslate"><span class="pre">S3</span></code>. That is, <code class="docutils literal notranslate"><span class="pre">S1</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">S2</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">S3</span></code>.</p>
+<p>We initialize <code class="docutils literal notranslate"><span class="pre">S1</span></code> to 10. We expect that the following outcomes (designated by <strong>On</strong>):</p>
+<ul class="simple">
+<li><p><strong>O1</strong>: <code class="docutils literal notranslate"><span class="pre">S1</span></code> decreases monotonically from 10 to 0.</p></li>
+<li><p><strong>O2</strong>: <code class="docutils literal notranslate"><span class="pre">S2</span></code> increases initially, peaks, and then declises to 0.</p></li>
+<li><p><strong>O3</strong>: <code class="docutils literal notranslate"><span class="pre">S3</span></code> increases monotonically to 10.</p></li>
+</ul>
+<p>Here is a first implementation of the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FIRST_IMPLEMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">R1: S1 -&gt; S2; k1*S1  </span>
+<span class="s1">R2: S2 -&gt; S3; k2*S1</span>
+
+<span class="s1">S1 = 10</span>
+<span class="s1">k1 = 1; k2 = 1</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">rr</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">FIRST_IMPLEMENTATION</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">rr</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First model of a linear pathway&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/testing_3_0.png" src="_images/testing_3_0.png" />
+</div>
+</div>
+<p>We see that O1 and O3 are satisfied. However, O2 is not. Why?</p>
+<p>Looking carefully at the Antimony model, we see there is an error in the specification of the kinetics law for reaction <code class="docutils literal notranslate"><span class="pre">R2</span></code>. The kinetics law incorrectly references <code class="docutils literal notranslate"><span class="pre">S1</span></code> instead of <code class="docutils literal notranslate"><span class="pre">S2</span></code>. Below is the corrected model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CORRECT_MODEL</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">R1:  S1 -&gt; S2; k1*S1  </span>
+<span class="s1">R2a: S2 -&gt; S3; k2*S2</span>
+
+<span class="s1">S1 = 10</span>
+<span class="s1">k1 = 1; k2 = 1;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">rr</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">CORRECT_MODEL</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">rr</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">rr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Correct model of a linear pathway&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/testing_5_0.png" src="_images/testing_5_0.png" />
+</div>
+</div>
+<p>In this model, all three outcomes are satisfied.</p>
+<p>Although the example is simple, it demonstrates how easy it is to make mistakes in the construction of models, especially complex models. A few mistakes can be detected by tellurium, such as misspelling the name of a floating species. However, the mistake made in the first model, substituting <code class="docutils literal notranslate"><span class="pre">S1</span></code> for <code class="docutils literal notranslate"><span class="pre">S2</span></code>, is not detected by Tellurium.</p>
+<p>How do we detect errors in the implementation of models (a processing often referred to as <em>verification</em>)? By implementation of the model, we mean that there is a clear understanding of the expected behavior of the model. Verification is about providing ways to detect if the implemention provides the expected behavior.</p>
+<p>Although our focus here is on verification, making sure that the intended model is what was built, there is another challenge in modeling. That is, choosing the corrrect model to implement.
+Modellers address this by checking for correspondence between simulation data and laboratory measurements.
+This process is called <strong>validation</strong>.
+Both verification and validation are essential to producing useful models.
+However, it makes no sense to validate a model that is implemented incorrectly.
+Further, while there is considerable focus in the literature on model validation, there is almost no discussion of verification.</p>
+<p>This chaper is about verifying simulation models, or verification testing.
+Such testing is done by examining models and their outputs.
+There are two kinds of verification tests.</p>
+<p>The first kind of verification tests only examines the model itself; the model is not executed.
+We refer to these as <strong>static tests</strong>.
+For example, one static test is to look for suspicious kinetics laws, such as the kinetics law for <code class="docutils literal notranslate"><span class="pre">R2</span></code>
+that references a floating species that is neither a reactant nor a product (which would be incorrect
+if the intended kinetics are mass action).
+In the above example,
+Drawing on the experience of the software industry over the last 50 years,
+we identify two kinds of validation.</p>
+<p>The second kind of verification tests runs simulations and compares the results with what the model developer
+expected.
+This is illustrated by outcomes O1-O3 and our analysis of the above two simulation models.</p>
+<p>The remainder of this chaper discusses static tests, dynamic tests, and provides a detailed example from BioModels.</p>
+</div>
+<div class="section" id="static-testing">
+<h2>Static Testing<a class="headerlink" href="#static-testing" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Relationship between static testing and software linters</p></li>
+<li><p>Reactions have two parts, a <strong>mass trasfer</strong> expression and a <strong>kinetics law</strong>.</p></li>
+<li><p>Errors in mass transfer</p>
+<ol class="simple">
+<li><p>Mass balance</p></li>
+<li><p>Blocked reactions</p></li>
+<li><p>Unreachable reactions</p></li>
+</ol>
+</li>
+<li><p>Errors in kinetics laws</p>
+<ol class="simple">
+<li><p>Incorrect reference to a chemical species</p></li>
+<li><p>negative valued 0th order kinetics</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="dynamic-testing">
+<h2>Dynamic Testing<a class="headerlink" href="#dynamic-testing" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Relationship with unit tests. Looking for errors; not proving correctness.</p></li>
+<li><p>Requirements for dynamic tests</p>
+<ol class="simple">
+<li><p>Predicates that describe expected behavior.</p></li>
+<li><p>Check the correspondence</p></li>
+</ol>
+</li>
+</ol>
+<p>Example 1: Linear pathway</p>
+<ol class="simple">
+<li><p>Expanding the list of predicates</p></li>
+<li><p>Code that automates testing the result</p></li>
+</ol>
+<p>Example 2</p>
+<ol class="simple">
+<li><p>Branched pathway</p></li>
+<li><p>Develop the predicates</p></li>
+<li><p>Code that tests for match</p></li>
+</ol>
+</div>
+<div class="section" id="example-from-biomodels">
+<h2>Example from BioModels<a class="headerlink" href="#example-from-biomodels" title="Permalink to this headline">¶</a></h2>
+<p>Model selected. It’s background.</p>
+<div class="section" id="checking-mass-balance">
+<h3>Checking mass balance<a class="headerlink" href="#checking-mass-balance" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="checking-for-cyclic-behavior">
+<h3>Checking for cyclic behavior<a class="headerlink" href="#checking-for-cyclic-behavior" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

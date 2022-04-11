@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Running Simulations &#8212; Biochemical Modeling</title>
+    <title>Chapter X: Advanced analyses with Tellurium &#8212; Biochemical Modeling</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner" href="model_simulation.html" />
-    <link rel="prev" title="Chapter X: Building a mechanistic model with the Antimony language" href="model_construction.html" />
+    <link rel="next" title="Chapter X: SBML, SED-ML, and the COMBINE archive: standard formats supported in Tellurium" href="standardized_formats.html" />
+    <link rel="prev" title="Analysis Tools" href="analysis.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -116,8 +116,8 @@
    Chapter X: Building a mechanistic model with the Antimony language
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulation.html">
    Running Simulations
   </a>
  </li>
@@ -136,8 +136,8 @@
    Analysis Tools
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="advanced_analyses.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Chapter X: Advanced analyses with Tellurium
   </a>
  </li>
@@ -186,9 +186,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/simulation.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/advanced_analyses.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -206,10 +206,56 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/advanced_analyses.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steady-state">
+   Steady state
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameter-scans">
+   Parameter scans
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensitivity-analysis">
+   Sensitivity analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-quantification">
+   Uncertainty quantification
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -218,8 +264,45 @@
         
               <div>
                 
-  <div class="section" id="running-simulations">
-<h1>Running Simulations<a class="headerlink" href="#running-simulations" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chapter-x-advanced-analyses-with-tellurium">
+<h1>Chapter X: Advanced analyses with Tellurium<a class="headerlink" href="#chapter-x-advanced-analyses-with-tellurium" title="Permalink to this headline">¶</a></h1>
+<p>(steady state, parameter scans, sensitivity analysis, uncertainty quantification, maybe MCA)</p>
+<div class="section" id="steady-state">
+<h2>Steady state<a class="headerlink" href="#steady-state" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="parameter-scans">
+<h2>Parameter scans<a class="headerlink" href="#parameter-scans" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sensitivity-analysis">
+<h2>Sensitivity analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="uncertainty-quantification">
+<h2>Uncertainty quantification<a class="headerlink" href="#uncertainty-quantification" title="Permalink to this headline">¶</a></h2>
+<br>
+<html>
+   <head>
+      <title>Bibliography</title>
+   </head>
+   <body>
+      <h1>Bibliography</h1>
+      <ol>
+         <li>
+            <p>K. Choi et al., <cite>Tellurium: An extensible python-based modeling environment for systems and synthetic biology</cite>, Biosystems, vol. 171, pp. 74–79, Sep. 2018.</p>
+         </li>
+         <li>
+            <p>E. T. Somogyi et al., <cite>libRoadRunner: a high performance SBML simulation and analysis library.,</cite>, Bioinformatics, vol. 31, no. 20, pp. 3315–21, Oct. 2015.</p>         
+          <li>
+            <p>L. P. Smith, F. T. Bergmann, D. Chandran, and H. M. Sauro, <cite>Antimony: a modular model definition language</cite>, Bioinformatics, vol. 25, no. 18, pp. 2452–2454, Sep. 2009.</p>
+         </li>
+         <li>
+            <p>K. Choi, L. P. Smith, J. K. Medley, and H. M. Sauro, <cite>phraSED-ML: a paraphrased, human-readable adaptation of SED-ML</cite>, J. Bioinform. Comput. Biol., vol. 14, no. 06, Dec. 2016.</p>
+         </li>
+         <li>
+            <p>J. Wolf, H. Y. Sohn, R. Heinrich, and H. Kuriyama, <cite>Mathematical analysis of a mechanism for autonomous metabolic oscillations in continuous culture of Saccharomyces cerevisiae</cite>, FEBS Lett., vol. 499, no. 3, pp. 230–234, Jun. 2001.</p>
+         </li>
+      </ol>
+   </body>
+</html></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -250,8 +333,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="model_construction.html" title="previous page">Chapter X: Building a mechanistic model with the Antimony language</a>
-    <a class='right-next' id="next-link" href="model_simulation.html" title="next page">Chapter X: Running deterministic and stochastic simulations with Tellurium and libRoadRunner</a>
+    <a class='left-prev' id="prev-link" href="analysis.html" title="previous page">Analysis Tools</a>
+    <a class='right-next' id="next-link" href="standardized_formats.html" title="next page">Chapter X: SBML, SED-ML, and the COMBINE archive: standard formats supported in Tellurium</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
